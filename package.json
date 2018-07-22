@@ -20,7 +20,9 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "dev": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "predeploy": "npm version patch -m \"Deploy %s to gh-pages\" && npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@storybook/addons": "@alpha",
@@ -29,5 +31,6 @@
     "cross-env": "^5.2.0",
     "gh-pages": "^1.2.0",
     "storybook-addon-material-ui": "@next"
-  }
+  },
+  "homepage": "https://react-theming.github.io/create-mui-theme/"
 }
