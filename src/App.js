@@ -73,7 +73,11 @@ class App extends Component {
     const newThemeList = this.state.themesList.filter(
       thm => thm.id !== theme.id
     );
-    theme.name = (theme.theme && themeName(theme.theme.palette)) || theme.name;
+    if (theme.theme) {
+      theme.name = themeName(theme.theme.palette) || theme.name;
+      theme.theme.themeName = theme.name;
+      theme.overrides.themeName = theme.name;
+    }
     newThemeList.push(theme);
     this.setState(
       {
@@ -87,17 +91,18 @@ class App extends Component {
 
   onAddQuery = query => {
     const { themesList } = this.state;
+    const id = genID();
     const newThemeList = [
       ...themesList,
       {
-        id: genID(),
+        id,
         ind: themesList.length,
         name: `Theme ${themesList.length + 1}`,
         query,
         status: STATUS.NEW,
       },
     ];
-    this.setState({ themesList: newThemeList }, () =>
+    this.setState({ themesList: newThemeList, selectedTheme: { id } }, () =>
       fetchThemes(this.state.themesList, this.updateThemesList)
     );
   };
@@ -115,7 +120,7 @@ class App extends Component {
         maxSize={600}
         defaultSize={300}
         style={{ position: 'relative' }}
-        pane2Style={{ height: 1}}
+        pane2Style={{ height: 1 }}
       >
         <SplitPane
           split="vertical"
@@ -141,6 +146,7 @@ class App extends Component {
         themesList={themesList}
         onAdd={this.onAddQuery}
         onClick={this.onSelectTheme}
+        currentThemeId={this.state.selectedTheme && this.state.selectedTheme.id}
       />
     );
     const themesCodeRender = () => (
@@ -173,10 +179,10 @@ export default withStyles({
     width: '100%',
     height: '100%',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   main: {
     height: 100,
     flexGrow: 1,
-  }
+  },
 })(App);

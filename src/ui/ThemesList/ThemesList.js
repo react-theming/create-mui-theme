@@ -63,12 +63,12 @@ class ThemesList extends React.Component {
   }
 
   render() {
-    const { classes, themesList, onClick } = this.props;
+    const { classes, themesList, onClick, currentThemeId } = this.props;
     return (
       <div name="ThemesList" className={classes.root}>
         <div className={classes.paper}>
         <div name="listContainer" className={classes.listContainer} ref={ref => {this.listContainer = ref }}>
-          <List themesList={themesList} onClick={onClick}/>
+          <List themesList={themesList} onClick={onClick} currentThemeId={currentThemeId}/>
         </div>
         <Divider classes={{root: classes.divider}}/>
           <div className={classes.inputSection}>

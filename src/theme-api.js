@@ -23,7 +23,7 @@ export const themeCode = overrides => {
   ${keys.map(key => `
   const ${key} = ${JSON.stringify(overrides[key])}
 
-  `)}
+  `).join('\n\n;')}
 
   export default createMuiTheme({ ${keys.map(key => key)} });
 
