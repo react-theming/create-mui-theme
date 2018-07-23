@@ -8,6 +8,7 @@ import { requestTheme, fetchThemes, STATUS } from './api';
 import { themeName, themeCode, themeJson } from './theme-api';
 import Title from './ui/Title';
 import DropDialog from './ui/DropDialog';
+import HelpDialog from './ui/HelpDialog';
 import ThemesList from './ui/ThemesList';
 import Editor from './ui/Editor';
 import Inspector from './ui/Inspector';
@@ -28,6 +29,7 @@ class App extends React.PureComponent {
       },
     ],
     selectedTheme: null,
+    showHelp: false,
   };
 
   componentDidMount() {
@@ -131,12 +133,14 @@ class App extends React.PureComponent {
           // primary="second"
         >
           {themesListRender()}
-            <Inspector selectedTheme={this.state.selectedTheme} expandLevel={1} />
+          <Inspector selectedTheme={this.state.selectedTheme} expandLevel={1} />
         </SplitPane>
         {themesCodeRender()}
       </SplitPane>
     </div>
   );
+
+  onHelp = () => this.setState({ showHelp: !this.state.showHelp });
 
   render() {
     const { themesList } = this.state;
@@ -162,7 +166,11 @@ class App extends React.PureComponent {
     const themesPropsRender = () => {};
     return (
       <div className={this.props.classes.app}>
-        <Title />
+        <Title onHelp={this.onHelp} />
+        <HelpDialog
+          open={this.state.showHelp}
+          onClose={() => this.setState({ showHelp: false })}
+        />
         <DropDialog
           open={this.state.dragover}
           onClose={() => this.setState({ dragover: false })}

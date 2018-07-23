@@ -35,8 +35,8 @@ export default withStyles({
       <PaletteTable theme={selectedTheme && selectedTheme.theme} />
     </div>
     <div className={classes.inspect}>
-      <CardHeader title={selectedTheme && selectedTheme.name} />
-      <ObjectInspector data={selectedTheme} expandLevel={1} />
+      <CardHeader title={selectedTheme && selectedTheme.name || 'Drop the theme URL here...'} />
+      {selectedTheme && <ObjectInspector data={selectedTheme} expandLevel={1} />}
     </div>
   </div>
 ));

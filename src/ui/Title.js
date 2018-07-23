@@ -21,6 +21,9 @@ const styles = {
     marginLeft: -12,
     marginRight: 20,
   },
+  button: {
+    borderColor: '#949494',
+  }
 };
 
 const LogoImage = withStyles({
@@ -38,8 +41,8 @@ const LogoImage = withStyles({
   </a>
 ));
 
-function ButtonAppBar(props) {
-  const { classes } = props;
+function Title(props) {
+  const { classes, onHelp } = props;
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -48,14 +51,12 @@ function ButtonAppBar(props) {
           <Typography variant="title" color="inherit" className={classes.flex}>
             Create MUI Theme
           </Typography>
+          <Button variant="outlined" color="secondary" className={classes.button} onClick={onHelp}>How to use it?</Button>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(Title);
