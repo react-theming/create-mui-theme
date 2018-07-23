@@ -54,6 +54,7 @@ class ThemesList extends React.Component {
 
   onAdd = () => {
     const val = this.input.value;
+    if (!val) return
     this.props.onAdd(val);
 
   };
@@ -73,7 +74,7 @@ class ThemesList extends React.Component {
         <Divider classes={{root: classes.divider}}/>
           <div className={classes.inputSection}>
             <TextField
-              value="https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=3949AB&secondary.color=388E3C"
+              // value="https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=3949AB&secondary.color=388E3C"
               inputRef={ref => (this.input = ref)}
               className={classes.textField}
               InputProps={{className: classes.InputProps}}

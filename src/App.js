@@ -24,7 +24,7 @@ class App extends React.PureComponent {
         ind: 0,
         name: 'Theme 1',
         query:
-          'primary.color=42A5F5&secondary.color=7B1FA2&primary.text.color=212121&secondary.text.color=ECEFF1',
+          'primary.color=000000&secondary.color=FFFFFF',
         status: STATUS.NEW,
       },
     ],
