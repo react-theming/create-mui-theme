@@ -115,6 +115,7 @@ class App extends Component {
         maxSize={600}
         defaultSize={300}
         style={{ position: 'relative' }}
+        pane2Style={{ height: 1}}
       >
         <SplitPane
           split="vertical"
@@ -128,7 +129,7 @@ class App extends Component {
             <ObjectInspector data={this.state.selectedTheme} expandLevel={1} />
           </div>
         </SplitPane>
-        <div>{themesCodeRender()}</div>
+        {themesCodeRender()}
       </SplitPane>
     </div>
   );
@@ -167,15 +168,15 @@ class App extends Component {
 }
 
 export default withStyles({
-  // app: {
-  //   position: 'absolute',
-  //   width: '100%',
-  //   height: '100%',
-  //   display: 'flex',
-  //   flexDirection: 'column'
-  // },
-  // main: {
-  //   height: 100,
-  //   flexGrow: 1,
-  // }
+  app: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  main: {
+    height: 100,
+    flexGrow: 1,
+  }
 })(App);

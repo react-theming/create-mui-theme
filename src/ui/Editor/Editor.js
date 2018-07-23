@@ -22,7 +22,7 @@ export default class App extends React.Component {
         // onValueChange={code => this.setState({ code })}
         onValueChange={() => {}}
         highlight={code => highlight(code, languages.js)}
-        padding={10}
+        // padding={10}
         className={this.props.className}
         style={{
           fontFamily: '"Fira code", "Fira Mono", monospace',
