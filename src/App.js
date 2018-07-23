@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import SplitPane from 'react-split-pane';
 import { ObjectInspector } from 'react-inspector';
+import { event } from 'global';
 
 import { requestTheme, fetchThemes, STATUS } from './api';
-import { themeName } from './theme-api'
+import { themeName } from './theme-api';
 import Title from './ui/Title';
+import DropDialog from './ui/DropDialog';
 import ThemesList from './ui/ThemesList';
-import DropText from './ui/DropText';
 
 const genID = () => `id_${Math.round(Math.random() * 10000000)}`;
 
 class App extends Component {
   state = {
+    dragover: false,
     themesList: [
       {
         id: genID(),
@@ -24,6 +26,39 @@ class App extends Component {
     ],
     selectedTheme: null,
   };
+
+  componentDidMount() {
+    window.addEventListener(
+      'dragover',
+      e => {
+        e = e; //|| event;
+        e.dataTransfer.items[0].getAsString(console.log);
+        this.setState({ dragover: true });
+        e.preventDefault();
+      },
+      false
+    );
+    window.addEventListener(
+      'dragleave',
+      e => {
+        e = e; //|| event;
+        this.setState({ dragover: false });
+        e.preventDefault();
+      },
+      false
+    );
+    window.addEventListener(
+      'drop',
+      e => {
+        e = e; //|| event;
+        this.setState({ dragover: false }, () => e.dataTransfer.items[0].getAsString(this.onAddQuery));
+
+        e.preventDefault();
+      },
+      false
+    );
+  }
+
   handleNewQuery = ev => {
     const { value } = ev.target;
     requestTheme(value);
@@ -34,11 +69,16 @@ class App extends Component {
     const newThemeList = this.state.themesList.filter(
       thm => thm.id !== theme.id
     );
-    theme.name = theme.theme && themeName(theme.theme.palette) || theme.name;
+    theme.name = (theme.theme && themeName(theme.theme.palette)) || theme.name;
     newThemeList.push(theme);
-    this.setState({
-      themesList: newThemeList.sort((t1, t2) => t2.ind - t1.ind),
-    }, () => this.state.selectedTheme && this.onSelectTheme(this.state.selectedTheme.id));
+    this.setState(
+      {
+        themesList: newThemeList.sort((t1, t2) => t2.ind - t1.ind),
+      },
+      () =>
+        this.state.selectedTheme &&
+        this.onSelectTheme(this.state.selectedTheme.id)
+    );
   };
 
   onAddQuery = query => {
@@ -60,8 +100,8 @@ class App extends Component {
 
   onSelectTheme = id => {
     const theme = this.state.themesList.find(thm => thm.id === id);
-    this.setState({selectedTheme: theme})
-  }
+    this.setState({ selectedTheme: theme });
+  };
 
   layout = ({ themesListRender, themesPropsRender, themesCode }) => (
     <div>
@@ -80,7 +120,9 @@ class App extends Component {
           // primary="second"
         >
           {themesListRender()}
-          <div style={{padding: 8}}><ObjectInspector data={this.state.selectedTheme} expandLevel={1} /></div>
+          <div style={{ padding: 8 }}>
+            <ObjectInspector data={this.state.selectedTheme} expandLevel={1} />
+          </div>
         </SplitPane>
         <div>{themesCode}</div>
       </SplitPane>
@@ -90,12 +132,20 @@ class App extends Component {
   render() {
     const { themesList } = this.state;
     const themesListRender = () => (
-      <ThemesList themesList={themesList} onAdd={this.onAddQuery} onClick={this.onSelectTheme}/>
+      <ThemesList
+        themesList={themesList}
+        onAdd={this.onAddQuery}
+        onClick={this.onSelectTheme}
+      />
     );
     const themesPropsRender = () => {};
     return (
       <div className="App">
         <Title />
+        <DropDialog
+          open={this.state.dragover}
+          onClose={() => this.setState({ dragover: false })}
+        />
         {this.layout({ themesListRender, themesPropsRender })}
       </div>
     );
