@@ -10,6 +10,7 @@ import Title from './ui/Title';
 import DropDialog from './ui/DropDialog';
 import ThemesList from './ui/ThemesList';
 import Editor from './ui/Editor';
+import Inspector from './ui/Inspector';
 
 const genID = () => `id_${Math.round(Math.random() * 10000000)}`;
 
@@ -116,9 +117,9 @@ class App extends React.PureComponent {
     <div className={this.props.classes.main}>
       <SplitPane
         split="horizontal"
-        minSize={200}
-        maxSize={600}
-        defaultSize={300}
+        minSize={300}
+        maxSize={800}
+        defaultSize={'70%'}
         style={{ position: 'relative' }}
         pane2Style={{ height: 1 }}
       >
@@ -130,9 +131,7 @@ class App extends React.PureComponent {
           // primary="second"
         >
           {themesListRender()}
-          <div style={{ padding: 8 }}>
-            <ObjectInspector data={this.state.selectedTheme} expandLevel={1} />
-          </div>
+            <Inspector selectedTheme={this.state.selectedTheme} expandLevel={1} />
         </SplitPane>
         {themesCodeRender()}
       </SplitPane>

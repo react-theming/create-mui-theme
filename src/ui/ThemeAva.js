@@ -13,10 +13,22 @@ class ThemeAva extends React.Component {
     );
   };
 
+  renderMatrix = matrix => (
+    <div className={this.props.classes.root}>
+      {matrix.map(row => this.renderRow(row))}
+    </div>
+  );
+
+  renderNull = () => {
+    const matrix = new Array(4).fill(new Array(4).fill('rgba(197, 196, 196, 0.74)'));
+    return this.renderMatrix(matrix);
+  };
+
   render() {
     const { classes, theme } = this.props;
-    if (!theme) return null;
+    if (!theme) return this.renderNull();
     const { palette } = theme;
+    if (!palette) return this.renderNull();
     const matrix = [
       [
         palette.primary.light,
@@ -43,11 +55,7 @@ class ThemeAva extends React.Component {
         palette.secondary.light,
       ],
     ];
-    return (
-      <div className={classes.root}>
-        {matrix.map(row => this.renderRow(row))}
-      </div>
-    );
+    return this.renderMatrix(matrix);
   }
 }
 
@@ -74,5 +82,7 @@ export default withStyles({
     backgroundColor: 'rgba(0,0,0,0)',
     width: '100%',
     height: '100%',
+    borderRight: '1px inset rgba(0,0,0,0.1)',
+    borderBottom: '1px solid rgba(0,0,0,0.1)'
   },
 })(ThemeAva);
