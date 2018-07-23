@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import SplitPane from 'react-split-pane';
 import { ObjectInspector } from 'react-inspector';
 import { event } from 'global';
 
 import { requestTheme, fetchThemes, STATUS } from './api';
-import { themeName } from './theme-api';
+import { themeName, themeCode, themeJson } from './theme-api';
 import Title from './ui/Title';
 import DropDialog from './ui/DropDialog';
 import ThemesList from './ui/ThemesList';
+import Editor from './ui/Editor';
 
 const genID = () => `id_${Math.round(Math.random() * 10000000)}`;
 
@@ -51,7 +53,9 @@ class App extends Component {
       'drop',
       e => {
         e = e; //|| event;
-        this.setState({ dragover: false }, () => e.dataTransfer.items[0].getAsString(this.onAddQuery));
+        this.setState({ dragover: false }, () =>
+          e.dataTransfer.items[0].getAsString(this.onAddQuery)
+        );
 
         e.preventDefault();
       },
@@ -103,8 +107,8 @@ class App extends Component {
     this.setState({ selectedTheme: theme });
   };
 
-  layout = ({ themesListRender, themesPropsRender, themesCode }) => (
-    <div>
+  layout = ({ themesListRender, themesPropsRender, themesCodeRender }) => (
+    <div className={this.props.classes.main}>
       <SplitPane
         split="horizontal"
         minSize={200}
@@ -124,7 +128,7 @@ class App extends Component {
             <ObjectInspector data={this.state.selectedTheme} expandLevel={1} />
           </div>
         </SplitPane>
-        <div>{themesCode}</div>
+        <div>{themesCodeRender()}</div>
       </SplitPane>
     </div>
   );
@@ -138,18 +142,40 @@ class App extends Component {
         onClick={this.onSelectTheme}
       />
     );
+    const themesCodeRender = () => (
+      <Editor
+        code={themeCode(
+          this.state.selectedTheme && this.state.selectedTheme.overrides
+        )}
+        json={themeJson(
+          this.state.selectedTheme && this.state.selectedTheme.theme
+        )}
+      />
+    );
     const themesPropsRender = () => {};
     return (
-      <div className="App">
+      <div className={this.props.classes.app}>
         <Title />
         <DropDialog
           open={this.state.dragover}
           onClose={() => this.setState({ dragover: false })}
         />
-        {this.layout({ themesListRender, themesPropsRender })}
+        {this.layout({ themesListRender, themesPropsRender, themesCodeRender })}
       </div>
     );
   }
 }
 
-export default App;
+export default withStyles({
+  // app: {
+  //   position: 'absolute',
+  //   width: '100%',
+  //   height: '100%',
+  //   display: 'flex',
+  //   flexDirection: 'column'
+  // },
+  // main: {
+  //   height: 100,
+  //   flexGrow: 1,
+  // }
+})(App);

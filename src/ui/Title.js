@@ -12,7 +12,7 @@ import logoImage from './logoImage'
 
 const styles = {
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
   },
   flex: {
     flexGrow: 1,
