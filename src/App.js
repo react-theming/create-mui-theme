@@ -13,7 +13,7 @@ import Editor from './ui/Editor';
 
 const genID = () => `id_${Math.round(Math.random() * 10000000)}`;
 
-class App extends Component {
+class App extends React.PureComponent {
   state = {
     dragover: false,
     themesList: [
@@ -141,6 +141,7 @@ class App extends Component {
 
   render() {
     const { themesList } = this.state;
+    console.log('​App -> render -> this.state.dragover', this.state.dragover);
     const themesListRender = () => (
       <ThemesList
         themesList={themesList}

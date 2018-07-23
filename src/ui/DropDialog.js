@@ -34,21 +34,31 @@ const styles = {
   },
 };
 
-class SimpleDialog extends React.Component {
+class SimpleDialog extends React.PureComponent {
   state = {
     dragover: false,
   };
+  static getDerivedStateFromProps(props, state) {
+    if (!props.open) {
+      return { dragover: false };
+    }
+    return null;
+  }
   handleClose = () => {
-    this.props.onClose(this.props.selectedValue);
+    this.setState({ dragover: false });
+    // this.props.onClose(this.props.selectedValue);
   };
 
   handleDragOver = ev => {
     this.setState({ dragover: true });
-  }
+  };
 
   render() {
     const { classes, onClose, selectedValue, ...other } = this.props;
-
+    console.log(
+      '​SimpleDialog -> render -> this.state.dragover',
+      this.state.dragover
+    );
     return (
       <Dialog
         onClose={this.handleClose}

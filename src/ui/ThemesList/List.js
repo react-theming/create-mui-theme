@@ -65,9 +65,7 @@ class CheckboxListSecondary extends React.Component {
               dense
               button
               className={
-                isActive(theme)
-                  ? classes.listItemActive
-                  : classes.listItem
+                isActive(theme) ? classes.listItemActive : classes.listItem
               }
               onClick={this.onClick(theme.id)}
             >
@@ -75,7 +73,7 @@ class CheckboxListSecondary extends React.Component {
                 <ThemeAva theme={theme.theme} />
               </Avatar>
               <ListItemText
-                primary={`${theme.name} ${theme.status}`}
+                primary={`${theme.name}`}
                 secondary={theme.query}
               />
               {/* <ListItemSecondaryAction>
