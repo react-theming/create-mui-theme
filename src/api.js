@@ -10,7 +10,6 @@ export const STATUS = {
 };
 
 export const requestTheme = toolUrl => {
-  console.log('requestTheme start -> ​toolUrl', toolUrl);
   const query = `
   query createTheme($toolUrl: String){
     createTheme(query: $toolUrl) {
@@ -40,6 +39,6 @@ export const fetchThemes = async (themesList, updState) => {
         updState({ ...theme, ...res, status: STATUS.READY });
       },
     }));
-  console.log('​exportfetchThemes -> fetchList finish', fetchList);
   const result = await multiFetch(fetchList);
+  return result;
 };

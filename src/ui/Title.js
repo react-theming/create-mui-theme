@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,8 +7,6 @@ import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/';
 
 import logoImage from './logoImage';
 
@@ -91,6 +88,7 @@ const ShortGuide = withStyles({
           className={classes.link}
           href="https://material.io/tools/color"
           target="_blank"
+          rel="noopener noreferrer"
         >
           https://material.io/tools/color
         </a>

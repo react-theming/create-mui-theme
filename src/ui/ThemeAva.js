@@ -30,7 +30,7 @@ class ThemeAva extends React.Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { theme } = this.props;
     if (!theme) return this.renderNull();
     const { palette } = theme;
     if (!palette) return this.renderNull();

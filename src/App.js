@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import SplitPane from 'react-split-pane';
-import { ObjectInspector } from 'react-inspector';
-import { event } from 'global';
 
 import { requestTheme, fetchThemes, STATUS } from './api';
 import { themeName, themeCode, themeJson } from './theme-api';
@@ -37,8 +35,6 @@ class App extends React.PureComponent {
     window.addEventListener(
       'dragover',
       e => {
-        e = e; //|| event;
-        // e.dataTransfer.items[0].getAsString(console.log);
         this.setState({ dragover: true });
         e.preventDefault();
       },
@@ -47,7 +43,6 @@ class App extends React.PureComponent {
     window.addEventListener(
       'dragleave',
       e => {
-        e = e; //|| event;
         this.setState({ dragover: false });
         e.preventDefault();
       },
@@ -56,7 +51,6 @@ class App extends React.PureComponent {
     window.addEventListener(
       'drop',
       e => {
-        e = e; //|| event;
         this.setState({ dragover: false }, () =>
           e.dataTransfer.items[0].getAsString(this.onAddQuery)
         );
@@ -73,7 +67,6 @@ class App extends React.PureComponent {
   };
 
   updateThemesList = theme => {
-    console.log('​App -> theme', theme);
     const newThemeList = this.state.themesList.filter(
       thm => thm.id !== theme.id
     );
@@ -145,7 +138,6 @@ class App extends React.PureComponent {
 
   render() {
     const { themesList } = this.state;
-    console.log('​App -> render -> this.state.dragover', this.state.dragover);
     const themesListRender = () => (
       <ThemesList
         themesList={themesList}
