@@ -1,4 +1,4 @@
-# Create Material-UI Theme: <img src="https://material-ui.com/static/images/material-ui-logo.svg" width="24"> + <img src="https://raw.githubusercontent.com/react-theming/readme/master/docs/OrgLogo.png" width="20">
+# Create Material-UI Theme: <img src="https://material-ui.com/static/images/material-ui-logo.svg" width="32"> + <img src="https://raw.githubusercontent.com/react-theming/readme/master/docs/OrgLogo.png" width="26">
 
 
 
