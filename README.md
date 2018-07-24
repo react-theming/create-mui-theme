@@ -1,3 +1,6 @@
+
+[![Live demo](https://img.shields.io/badge/Live%20Demo-gh--pages-brightgreen.svg)](https://react-theming.github.io/create-mui-theme/)
+
 # Create Material-UI Theme: <img src="https://material-ui.com/static/images/material-ui-logo.svg" width="32"> + <img src="https://raw.githubusercontent.com/react-theming/readme/master/docs/OrgLogo.png" width="26">
 
 
@@ -33,3 +36,4 @@ Any contributions are very welcome!
 
 [![@react-theming](https://img.shields.io/badge/github-React%20Theming-red.svg)](https://github.com/react-theming)
 
+[![GitHub release](https://img.shields.io/github/release/react-theming/create-mui-theme.svg)](https://github.com/react-theming/create-mui-theme)
