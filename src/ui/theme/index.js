@@ -10,4 +10,7 @@ const spacing = {
 }
 
 export default createMuiTheme({ palette, spacing });
-console.log(createMuiTheme());
+console.log(createMuiTheme({palette: {
+  primary: { main: '#DCEDC8' },
+  secondary: { main: '#B3E5FC' },
+}}).palette);

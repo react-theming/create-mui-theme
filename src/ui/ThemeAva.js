@@ -38,7 +38,7 @@ class ThemeAva extends React.Component {
       [
         palette.primary.light,
         palette.primary.light,
-        palette.text.primary,
+        palette.primary.contrastText,
         palette.primary.dark,
       ],
       [
@@ -55,7 +55,7 @@ class ThemeAva extends React.Component {
       ],
       [
         palette.secondary.dark,
-        palette.text.secondary,
+        palette.secondary.contrastText,
         palette.secondary.light,
         palette.secondary.light,
       ],
