@@ -1,8 +1,10 @@
-# Create Material-UI Theme
+# Create Material-UI Theme: <img src="https://material-ui.com/static/images/material-ui-logo.svg" width="24"> + <img src="https://raw.githubusercontent.com/react-theming/readme/master/docs/OrgLogo.png" width="20">
 
-Online tool for creating Material-UI themes via Material Design Color Tool (material.io/tools/color)
 
-1. Open `Color Tool` material.io/tools/color and `Create MUI Theme` react-theming.github.io/create-mui-theme/
+
+Online tool for creating Material-UI themes via Material Design Color Tool (https://material.io/tools/color)
+
+1. Open `Color Tool` https://material.io/tools/color and `Create MUI Theme` https://react-theming.github.io/create-mui-theme/
 2. Select colors of your choice in `Color Tool`
 3. Copy-paste URL from `Color Tool` browser tab to the input field in `Create MUI Theme` and click ADD (or simply drag & drop by mouse)
 4. Take auto-generated code below and use it in your project
