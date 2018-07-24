@@ -1,12 +1,27 @@
 # Create Material-UI Theme
 
-under development
+Online tool for creating Material-UI themes via Material Design Color Tool (material.io/tools/color)
 
-https://react-theming.github.io/create-mui-theme/
+1. Open `Color Tool` material.io/tools/color and `Create MUI Theme` react-theming.github.io/create-mui-theme/
+2. Select colors of your choice in `Color Tool`
+3. Copy-paste URL from `Color Tool` browser tab to the input field in `Create MUI Theme` and click ADD (or simply drag & drop by mouse)
+4. Take auto-generated code below and use it in your project
+
+[![Demo1](/docs/screencast1.gif)](https://raw.githubusercontent.com/react-theming/create-mui-theme/master/docs/screencast1.gif)
+
+## Example
+
+Drag & Drop this URL onto page
+>https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=AD1457&secondary.color=03A9F4&secondary.text.color=FAFAFA
+
+## Usage
+
+You can use this auto-generated code with any your project which uses Material-UI of version 1.0.0 and above. For example you can start with [Create Material-UI App](https://github.com/react-theming/create-material-ui-app). Generated themes are compatible with with [Storybook Addon Material-UI](https://github.com/react-theming/storybook-addon-material-ui)
 
 ## CONTRIBUTING
 
-Any feature requests, issues, PRs to this project are very welcome!
+
+Any contributions are very welcome!
 
 #### Credits
 

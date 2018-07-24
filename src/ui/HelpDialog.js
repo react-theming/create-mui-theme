@@ -118,7 +118,7 @@ class SimpleDialog extends React.PureComponent {
             3. You can repeat it as much as you need. All themes will be listed on the left panel. You can select any to inspect.
           </Typography>
           <Typography component="p" paragraph>
-            4. As you select a theme you'll find a code that you can copy-paste it to your project and use this theme. There are JS and JSON variants for your choice.
+            4. As you select a theme you'll find a code that you can copy-paste in your project and use this theme. There are JS and JSON variants for your choice.
           </Typography>
 
           <DialogTitle
