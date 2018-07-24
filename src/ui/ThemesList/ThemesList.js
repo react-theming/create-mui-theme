@@ -77,8 +77,8 @@ class ThemesList extends React.Component {
               // value="https://material.io/tools/color/#!/?view.left=0&view.right=0&primary.color=3949AB&secondary.color=388E3C"
               inputRef={ref => (this.input = ref)}
               className={classes.textField}
-              InputProps={{className: classes.InputProps}}
-              placeholder="Paste query string here"
+              InputProps={{className: classes.textInput}}
+              placeholder="Paste URL here"
               margin="normal"
             />
             <Button

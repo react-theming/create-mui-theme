@@ -19,25 +19,26 @@ class App extends React.PureComponent {
   state = {
     dragover: false,
     themesList: [
-      {
-        id: genID(),
-        ind: 0,
-        name: 'Theme 1',
-        query:
-          'primary.color=000000&secondary.color=FFFFFF',
-        status: STATUS.NEW,
-      },
+      // {
+      //   id: genID(),
+      //   ind: 0,
+      //   name: 'Theme 1',
+      //   query:
+      //     'primary.color=000000&secondary.color=FFFFFF',
+      //   status: STATUS.NEW,
+      // },
     ],
     selectedTheme: null,
     showHelp: false,
   };
 
   componentDidMount() {
+    this.onAddQuery('primary.color=3f51b5&secondary.color=f50057');
     window.addEventListener(
       'dragover',
       e => {
         e = e; //|| event;
-        e.dataTransfer.items[0].getAsString(console.log);
+        // e.dataTransfer.items[0].getAsString(console.log);
         this.setState({ dragover: true });
         e.preventDefault();
       },

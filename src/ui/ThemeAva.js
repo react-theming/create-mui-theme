@@ -1,22 +1,27 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 
 class ThemeAva extends React.Component {
-  renderRow = colors => {
+  static defaultProps = {
+    // Holder: div
+  }
+
+  renderRow = (colors, rowInd) => {
     const { classes } = this.props;
     return (
-      <div className={classes.row}>
-        {colors.map(col => (
-          <div className={classes.pixel} style={{ backgroundColor: col }} />
+      <div key={rowInd} className={classes.row}>
+        {colors.map((col, ind) => (
+          <div key={ind} className={classes.pixel} style={{ backgroundColor: col }} />
         ))}
       </div>
     );
   };
 
   renderMatrix = matrix => (
-    <div className={this.props.classes.root}>
-      {matrix.map(row => this.renderRow(row))}
-    </div>
+    <Paper className={this.props.classes.root}>
+      {matrix.map((row, ind) => this.renderRow(row, ind))}
+    </Paper>
   );
 
   renderNull = () => {
@@ -62,7 +67,7 @@ class ThemeAva extends React.Component {
 export default withStyles({
   root: {
     borderRadius: '10%',
-    border: '#8c8c8c 1px solid',
+    // border: '#8c8c8c 1px solid',
     overflow: 'hidden',
     // width: 128,
     // height: 128,

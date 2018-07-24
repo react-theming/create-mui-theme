@@ -23,19 +23,37 @@ import blue from '@material-ui/core/colors/blue';
 const styles = {
   root: {
     // width: 800,
-    maxWidth: 1200,
+    // maxWidth: 1200,
     outline: 'none',
-    borderRadius: 2,
+    overflow: 'hidden',
+    // borderRadius: 2,
+    '& a': {
+      color: '#2358fb',
+      textDecoration: 'none',
+    },
+    '& a:visited': {
+      color: '#3b539a',
+    },
   },
   title: {
     textAlign: 'center',
   },
   media: {
-    height: 70,
+    height: 90,
   },
   mediaOver: {
     height: 400,
     opacity: 0.6,
+  },
+  p: {
+    '&>a': {
+      color: 'red',
+    },
+  },
+  footer: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    padding: 16,
   },
 };
 
@@ -88,24 +106,19 @@ class SimpleDialog extends React.PureComponent {
             <a href="https://material.io/tools/color" target="_blank">
               https://material.io/tools/color
             </a>{' '}
-            and create new material-ui theme
+            and create a new material-ui theme.
           </Typography>
           <Typography component="p">
-            2. Copy & Paste full URL from browser address bar into left panel on
-            this page and press the "ADD" button
+            2. Copy & Paste URL from browser address bar into the left panel on this page and press the "ADD" button.
           </Typography>
           <Typography component="p" paragraph>
-            (or you can simply drag url by your mouse from material.io and drop
-            it here in any place)
+          (or you can simply drag URL by your mouse from material.io and drop it here in any place)
           </Typography>
           <Typography component="p" paragraph>
-            3. You can repeat it as much as you need. All themes will be listed
-            at the left panel. You can select any to inspect.
+            3. You can repeat it as much as you need. All themes will be listed on the left panel. You can select any to inspect.
           </Typography>
           <Typography component="p" paragraph>
-            4. As you select a theme you'll find a code that you can copy-paste
-            it to you project and use this theme. There are js and json variants
-            for your choice
+            4. As you select a theme you'll find a code that you can copy-paste it to your project and use this theme. There are JS and JSON variants for your choice.
           </Typography>
 
           <DialogTitle
@@ -132,8 +145,7 @@ class SimpleDialog extends React.PureComponent {
             </a>
           </Typography>
           <Typography component="p" paragraph>
-            3. Test how these tools goes together starting new project from
-            scratch with{' '}
+            3. Test how these tools go together starting a new project from scratch with{' '}
             <a href="https://github.com/react-theming/create-material-ui-app">
               create-material-ui-app
             </a>{' '}
@@ -151,7 +163,7 @@ class SimpleDialog extends React.PureComponent {
             <a href="https://github.com/react-theming" target="_blanc">
               React-Theming
             </a>{' '}
-            as an extension of{' '}
+            as an addition for{' '}
             <a
               href="https://github.com/react-theming/storybook-addon-material-ui"
               target="_blanc"
@@ -169,7 +181,7 @@ class SimpleDialog extends React.PureComponent {
             </a>{' '}
             project under the MIT License
           </Typography>
-          <Typography>
+          {/* <Typography>
             Author:
             <Typography component="p" paragraph>
               <a href="https://t.me/usulpro" target="_blanc">
@@ -186,18 +198,40 @@ class SimpleDialog extends React.PureComponent {
                 />
               </a>
             </Typography>
-          </Typography>
+          </Typography> */}
         </CardContent>
-        <CardActions>
-          <Button href="https://material.io/tools/color"  target="_blanc" size="small" color="primary">
-            Color Tool
-          </Button>
-          <Button href="https://github.com/react-theming/create-mui-theme"  target="_blanc"  size="small" color="primary">
-            Create MUI Theme
-          </Button>
-          <Button href="https://github.com/react-theming/storybook-addon-material-ui"  target="_blanc"  size="small" color="primary">
+        <CardActions className={classes.footer}>
+          <Button
+            href="https://github.com/react-theming/storybook-addon-material-ui"
+            target="_blanc"
+            size="small"
+            color="primary"
+          >
             Storybook Addon Material-UI
           </Button>
+          <Button
+            href="https://material.io/tools/color"
+            target="_blanc"
+            size="small"
+            color="primary"
+          >
+            Color Tool
+          </Button>
+          <Button
+            href="https://github.com/react-theming/create-mui-theme"
+            target="_blanc"
+            size="small"
+            color="primary"
+          >
+            Create MUI Theme
+          </Button>
+          <a href="https://github.com/UsulPro">
+            <img
+              src="https://camo.githubusercontent.com/5e97cb3d4cb089e0109a243a505cfebc3f75a9ba/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6769746875622d5573756c50726f2d626c75652e737667"
+              alt="@UsulPro"
+              data-canonical-src="https://img.shields.io/badge/github-UsulPro-blue.svg"
+            />
+          </a>
         </CardActions>
       </Dialog>
     );

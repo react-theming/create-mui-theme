@@ -10,3 +10,4 @@ const spacing = {
 }
 
 export default createMuiTheme({ palette, spacing });
+console.log(createMuiTheme());
