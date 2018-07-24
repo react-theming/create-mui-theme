@@ -6,6 +6,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 
 const dispColors = obj => {
   const keys = Object.keys(obj);
@@ -28,18 +30,13 @@ export default withStyles({
   pic: {
     height: 10,
     width: 10,
-    border: '1px solid #989898'
+    border: '1px solid #989898',
   },
 })(({ classes, theme }) => {
   if (!theme) return null;
   const palette = theme.palette;
   if (!palette) return null;
   const { primary, secondary } = palette;
-
-  // return <div className={classes.root}>
-  //   {dispColors(primary)}
-  //   {dispColors(secondary)}
-  // </div>;
 
   return (
     <React.Fragment>
@@ -53,15 +50,25 @@ export default withStyles({
         <TableBody>
           {dispColors(primary).map(color => {
             return (
-              <TableRow className={classes.row} key={color.name}>
-                <TableCell className={classes.cell}>{color.name}</TableCell>
-                <TableCell className={classes.cell}>
-                  <div
-                    className={classes.pic}
-                    style={{ backgroundColor: color.val }}
-                  />
-                </TableCell>
-              </TableRow>
+              <Tooltip
+                TransitionComponent={Zoom}
+                TransitionProps={{ timeout: 600 }}
+                title={color.val}
+                placement="right"
+              >
+                <TableRow
+                  className={classes.row}
+                  key={color.name}
+                >
+                  <TableCell className={classes.cell}>{color.name}</TableCell>
+                  <TableCell className={classes.cell}>
+                    <div
+                      className={classes.pic}
+                      style={{ backgroundColor: color.val }}
+                    />
+                  </TableCell>
+                </TableRow>
+              </Tooltip>
             );
           })}
         </TableBody>
@@ -76,15 +83,25 @@ export default withStyles({
         <TableBody>
           {dispColors(secondary).map(color => {
             return (
-              <TableRow className={classes.row} key={color.name}>
-                <TableCell className={classes.cell}>{color.name}</TableCell>
-                <TableCell className={classes.cell}>
-                  <div
-                    className={classes.pic}
-                    style={{ backgroundColor: color.val }}
-                  />
-                </TableCell>
-              </TableRow>
+              <Tooltip
+                TransitionComponent={Zoom}
+                TransitionProps={{ timeout: 600 }}
+                title={color.val}
+                placement="right"
+              >
+                <TableRow
+                  className={classes.row}
+                  key={color.name}
+                >
+                  <TableCell className={classes.cell}>{color.name}</TableCell>
+                  <TableCell className={classes.cell}>
+                    <div
+                      className={classes.pic}
+                      style={{ backgroundColor: color.val }}
+                    />
+                  </TableCell>
+                </TableRow>
+              </Tooltip>
             );
           })}
         </TableBody>
