@@ -23,8 +23,14 @@ Drag & Drop this URL onto page
 
 You can use this auto-generated code with any your project which uses Material-UI of version 1.0.0 and above. For example you can start with [Create Material-UI App](https://github.com/react-theming/create-material-ui-app). Generated themes are compatible with with [Storybook Addon Material-UI](https://github.com/react-theming/storybook-addon-material-ui)
 
-## CONTRIBUTING
+## Related links
 
+- https://material.io/tools/color
+- https://material-ui.com/style/color/#material-color-tool
+- https://material-ui.com/customization/themes/
+- https://react-theming.github.io/create-mui-theme/
+
+## CONTRIBUTING
 
 Any contributions are very welcome!
 
