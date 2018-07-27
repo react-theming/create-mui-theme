@@ -30,6 +30,12 @@ You can use this auto-generated code with any your project which uses Material-U
 - https://material-ui.com/customization/themes/
 - https://react-theming.github.io/create-mui-theme/
 
+## Support
+
+You can support this project with your stars and RT
+
+https://twitter.com/UsulPro/status/1022781130246905856
+
 ## CONTRIBUTING
 
 Any contributions are very welcome!
